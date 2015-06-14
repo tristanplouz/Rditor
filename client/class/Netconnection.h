@@ -3,6 +3,7 @@
 
 #include <SFML/Network.hpp>
 
+//Class gerant la connextion reseau
 class Netconnection {
 
 	public:
