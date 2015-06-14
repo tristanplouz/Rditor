@@ -7,19 +7,20 @@ Netconnection::Netconnection():address ("localhost"),port(9876){
 
 bool Netconnection::connect(){
 
-
+  char data[100];
+  std::size_t received;
   std::string name = "qqch";
-  sf::TcpSocket socket;
   sf::Socket::Status status = socket.connect(address, port);
   if (status != sf::Socket::Done){
       return 0;
   }
-  else {
-    void* pname = &name;
-    if (socket.send(pname, name.length()) != sf::Socket::Done){
-    // erreur...
-    }
+  void* pname = &name;
+  if (socket.send(pname, 100) != sf::Socket::Done){
+  // erreur...
   }
-  return 1;
+  /*if (socket.receive(data, 100, received) != sf::Socket::Done){
+      // erreur...
+  }*/
 
+  return 1;
 }

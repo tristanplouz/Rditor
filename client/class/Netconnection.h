@@ -10,6 +10,7 @@ class Netconnection {
 		bool connect();
 
 	private:
+		sf::TcpSocket socket;
 		std::string address;
 		int port;
 
