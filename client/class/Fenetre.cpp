@@ -18,12 +18,15 @@ Fenetre::Fenetre():menu(),boiteV(),body(),footer()  {
                                                         footer.status.push(menu.actualFile);});
     menu.enregistrerAc->signal_activate().connect([this](){if(menu.sauverFunction(body.getData())){footer.saved.push("Saved");}});
 
+    menu.connectAc->signal_activate().connect([this](){if(netCo.connect()){Gtk::MessageDialog dial(*this, "bien connecté", false, Gtk::MESSAGE_INFO);dial.run();}});
     body.bufferText->signal_changed().connect([this](){footer.saved.push("Not saved");});
 
     menu.html.signal_activate().connect([this]{body.addText(snippet.html);});
     menu.condition.signal_activate().connect([this]{body.addText(snippet.contidion);});
     menu.bouclefor.signal_activate().connect([this]{body.addText(snippet.boucleFor);});
     menu.bouclewhile.signal_activate().connect([this]{body.addText(snippet.boucleWhile);});
-    //Gtk::MessageDialog dialogue(*this, body.getData(), false, Gtk::MESSAGE_INFO);
+
+
+
 
 }

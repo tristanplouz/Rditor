@@ -8,7 +8,7 @@
 Menu::Menu():  barreMenu(),
                           menuItemFichier("Fichier"),menuFichier(),ouvrirAc(Gtk::Action::create("Ouvrir",Gtk::Stock::OPEN)),enregistrerAc(Gtk::Action::create("Enregistrer",Gtk::Stock::SAVE_AS)),fermer(Gtk::Stock::CLOSE),
                           menuItemEdition("Edition"),
-                          menuItemReseau("Réseau"),menuReseau(),host("Heberger"),connectAc(Gtk::Action::create("Se connecter",Gtk::Stock::CONNECT)),
+                          menuItemReseau("Réseau"),menuReseau(),connectAc(Gtk::Action::create("Se connecter",Gtk::Stock::CONNECT)),
                           menuItemSnippet("Snippet"),menuSnippet(),html("HTML"),bouclefor("For"),bouclewhile("While"),condition("If"),
                           separateur()  {
 

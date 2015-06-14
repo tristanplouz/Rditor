@@ -45,13 +45,6 @@ class Menu: public Gtk::Window {
       Gtk::ImageMenuItem fermer;
       //Save et Open en public
 
-      //Contenu sous menu Snippet
-
-
-      //Contenu sous menu reseau
-      Gtk::ImageMenuItem host;
-      Gtk::ImageMenuItem connect;
-
       //Separateur
       Gtk::SeparatorMenuItem separateur;
       Gtk::SeparatorToolItem separateurBarreOutils;
