@@ -3,7 +3,7 @@
 
 #include <SFML/Network.hpp>
 
-class Netconnection(){
+class Netconnection {
 
 	public:
 		Netconnection();
@@ -13,6 +13,6 @@ class Netconnection(){
 		std::string address;
 		int port;
 
-}
+};
 
 #endif
