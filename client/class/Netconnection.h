@@ -3,6 +3,7 @@
 
 #include <SFML/Network.hpp>
 
+//Class gerant la connextion reseau
 class Netconnection {
 
 	public:
@@ -10,6 +11,7 @@ class Netconnection {
 		bool connect();
 
 	private:
+		sf::TcpSocket socket;
 		std::string address;
 		int port;
 

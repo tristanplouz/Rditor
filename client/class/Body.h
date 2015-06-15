@@ -7,16 +7,28 @@ class Body: public Gtk::Window {
 
     public:
       Body();
-      Gtk::VBox bodyBox;
+      //Conteneur
+      Gtk::HBox bodyBox;
+
+      //Contenu
+      Glib::RefPtr<Gtk::TextBuffer> bufferProg;
+      Gtk::Label indev;
+      Gtk::Expander chatBox;
+      Gtk::ScrolledWindow scrollProg;
+
+      //Function
       void openText(std::string text);
       void addText(std::string data);
       std::string getData();
-      Glib::RefPtr<Gtk::TextBuffer> bufferText;
-      Gtk::TextView zoneTexte;
 
     private:
+      Gtk::TextView zoneProg;
 
-      Gtk::ScrolledWindow scroll;
+      //chat
+      Gtk::VBox chat;
+      Gtk::Label chatContent;
+      Gtk::Entry chatTextSend;
+      Gtk::Button bouton;
 
 };
 

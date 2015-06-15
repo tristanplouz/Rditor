@@ -6,32 +6,46 @@
 
 
 Menu::Menu():  barreMenu(),
-                          menuItemFichier("Fichier"),menuFichier(),ouvrirAc(Gtk::Action::create("Ouvrir",Gtk::Stock::OPEN)),enregistrerAc(Gtk::Action::create("Enregistrer",Gtk::Stock::SAVE_AS)),fermer(Gtk::Stock::CLOSE),
+                          menuItemFichier("Fichier"),ouvrirAc(Gtk::Action::create("Ouvrir",Gtk::Stock::OPEN)),enregistrerAc(Gtk::Action::create("Enregistrer",Gtk::Stock::SAVE_AS)),fermer(Gtk::Stock::CLOSE),
                           menuItemEdition("Edition"),
-                          menuItemReseau("Réseau"),menuReseau(),host("Heberger"),connectAc(Gtk::Action::create("Se connecter",Gtk::Stock::CONNECT)),
-                          menuItemSnippet("Snippet"),menuSnippet(),html("HTML"),bouclefor("For"),bouclewhile("While"),condition("If"),
-                          separateur()  {
+                          menuItemMode("Mode"),code(grModeRadio,"Code"),text(grModeRadio,"Traitement de texte"),dessin(grModeRadio,"Dessin"),
+                          menuItemReseau("Réseau"),connectAc(Gtk::Action::create("Se connecter",Gtk::Stock::CONNECT)),
+                          menuItemSnippet("Snippet"),html("HTML"),bouclefor("For"),bouclewhile("While"),condition("If")  {
 
+  //creation du menu Fichier et de son contenu
   menuItemFichier.set_submenu(menuFichier);
   menuFichier.append(*(ouvrirAc->create_menu_item()));
   menuFichier.append(*(enregistrerAc->create_menu_item()));
   menuFichier.append(separateur);
   menuFichier.append(fermer);
 
+
+  //creation du menu Reseau et de son contenu
+  menuItemReseau.set_submenu(menuReseau);
+  menuReseau.append(*(connectAc->create_menu_item()));
+
+  //creation du menu Mode et de son contenu
+  menuItemMode.set_submenu(menuMode);
+  menuMode.append(code);
+  menuMode.append(text);
+  menuMode.append(dessin);
+  code.set_active();
+
+  //Ajout des differents menus a la barre
+  barreMenu.append(menuItemFichier);
+  barreMenu.append(menuItemEdition);
+  barreMenu.append(menuItemReseau);
+  barreMenu.append(menuItemMode);
+
+  //barre dedier
   menuItemSnippet.set_submenu(menuSnippet);
   menuSnippet.append(html);
   menuSnippet.append(bouclefor);
   menuSnippet.append(bouclewhile);
   menuSnippet.append(condition);
 
-  menuItemReseau.set_submenu(menuReseau);
-  menuReseau.append(*(connectAc->create_menu_item()));
+  barreProg.append(menuItemSnippet);
 
-
-  barreMenu.append(menuItemFichier);
-  //barreMenu.append(menuItemEdition);
-  barreMenu.append(menuItemReseau);
-  barreMenu.append(menuItemSnippet);
 
   //Ajout des signaux pour le menu
   fermer.signal_activate().connect(sigc::ptr_fun(&Gtk::Main::quit));
@@ -44,7 +58,9 @@ Menu::Menu():  barreMenu(),
   barreOutils.append(separateurBarreOutils);
   barreOutils.append(*(connectAc->create_tool_item()));
 
-
+  //ajout du menu et de la tool barre a la boite
+  boiteMenu.pack_start(barreMenu);
+  boiteMenu.pack_start(barreOutils);
 }
 
 
@@ -94,9 +110,6 @@ std::string Menu::ouvrirFichier(std::string fileName){
   }
 
   return texte;
-  //Obtenir le buffer de la zone de texte.
-  //Glib::RefPtr<Gtk::TextBuffer> buffer = zoneTexte.get_buffer();
-  //buffer->set_text(texte); //Modifier le texte du buffer.
 
 }
 

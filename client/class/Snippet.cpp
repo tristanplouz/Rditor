@@ -21,7 +21,9 @@ Snippet::Snippet():html(),contidion(), boucleFor(), boucleWhile() {
       texte="";
   }
   else{
-    Gtk::MessageDialog dialogue(*this,"Erreur d'ouverture d'un  fichier ressource de type snippet" , false, Gtk::MESSAGE_INFO);
+    Gtk::MessageDialog dialogue(*this,"Erreur d'ouverture d'un  fichier ressource" , false, Gtk::MESSAGE_ERROR);
+    dialogue.set_secondary_text("ressource/snippet/html.txt");
+    dialogue.set_title("Fichier manquant");
     dialogue.run();
   }
   if(fCondition) {
@@ -35,7 +37,9 @@ Snippet::Snippet():html(),contidion(), boucleFor(), boucleWhile() {
       texte="";
   }
   else{
-    Gtk::MessageDialog dialogue(*this,"Erreur d'ouverture d'un  fichier ressource de type snippet" , false, Gtk::MESSAGE_INFO);
+    Gtk::MessageDialog dialogue(*this,"Erreur d'ouverture d'un  fichier ressource" , false, Gtk::MESSAGE_ERROR);
+    dialogue.set_secondary_text("ressource/snippet/if.txt");
+    dialogue.set_title("Fichier manquant");
     dialogue.run();
   }
   if(fBoucleFor) {
@@ -49,7 +53,9 @@ Snippet::Snippet():html(),contidion(), boucleFor(), boucleWhile() {
       texte="";
   }
   else{
-    Gtk::MessageDialog dialogue(*this,"Erreur d'ouverture d'un  fichier ressource de type snippet" , false, Gtk::MESSAGE_INFO);
+    Gtk::MessageDialog dialogue(*this,"Erreur d'ouverture d'un  fichier ressource" , false, Gtk::MESSAGE_ERROR);
+    dialogue.set_secondary_text("ressource/snippet/for.txt");
+    dialogue.set_title("Fichier manquant");
     dialogue.run();
   }
   if(fBoucleWhile) {
@@ -63,7 +69,9 @@ Snippet::Snippet():html(),contidion(), boucleFor(), boucleWhile() {
       texte="";
   }
   else{
-    Gtk::MessageDialog dialogue(*this,"Erreur d'ouverture d'un  fichier ressource de type snippet" , false, Gtk::MESSAGE_INFO);
+    Gtk::MessageDialog dialogue(*this,"Erreur d'ouverture d'un  fichier ressource" , false, Gtk::MESSAGE_ERROR);
+    dialogue.set_secondary_text("ressource/snippet/while.txt");
+    dialogue.set_title("Fichier manquant");
     dialogue.run();
   }
 
