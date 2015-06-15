@@ -21,6 +21,7 @@ class Fenetre : public Gtk::Window {
       Snippet snippet;
       Netconnection netCo;
       Gtk::VBox boiteV;
+      int mode;//1:code 2:texte 3:dessin
 
 };
 

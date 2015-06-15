@@ -29,6 +29,7 @@ Menu::Menu():  barreMenu(),
   menuMode.append(code);
   menuMode.append(text);
   menuMode.append(dessin);
+  code.set_active();
 
   //Ajout des differents menus a la barre
   barreMenu.append(menuItemFichier);
@@ -109,9 +110,6 @@ std::string Menu::ouvrirFichier(std::string fileName){
   }
 
   return texte;
-  //Obtenir le buffer de la zone de texte.
-  //Glib::RefPtr<Gtk::TextBuffer> buffer = zoneTexte.get_buffer();
-  //buffer->set_text(texte); //Modifier le texte du buffer.
 
 }
 
