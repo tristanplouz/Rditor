@@ -33,7 +33,9 @@ Fenetre::Fenetre()  {
 
     /*body.bufferProg->signal_changed().connect([this](){
       footer.saved.push("Not saved");
-    });//evenement lors de la modification de la zone de texte*/
+      footer.nbrLigne.push(std::to_string(body.bufferProg->get_line_count()));
+    }); //evenement lors de la modification de la zone de texte
+    */
 
     menu.code.signal_toggled().connect([this](){ //ATTENTION CODE TRES CHELOU MAIS CA FONCTIONNE
 

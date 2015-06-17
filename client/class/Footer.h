@@ -10,10 +10,11 @@ class Footer: public Gtk::Window {
     Gtk::HBox footerBox;
     Gtk::Statusbar status;
     Gtk::Statusbar saved;
+    Gtk::Statusbar nbrLigne;
 
   private:
     Gtk::Statusbar version;
-    Gtk::Statusbar nbrLigne;
+
 
 
 
