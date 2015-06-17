@@ -31,9 +31,9 @@ Fenetre::Fenetre()  {
       }
     });//Action de la connection
 
-    body.bufferProg->signal_changed().connect([this](){
+    /*body.bufferProg->signal_changed().connect([this](){
       footer.saved.push("Not saved");
-    });//evenement lors de la modification de la zone de texte
+    });//evenement lors de la modification de la zone de texte*/
 
     menu.code.signal_toggled().connect([this](){ //ATTENTION CODE TRES CHELOU MAIS CA FONCTIONNE
 
@@ -73,7 +73,7 @@ Fenetre::Fenetre()  {
     });//Evenement de changement de mode
 
     //Gestion des snippets
-    menu.html.signal_activate().connect([this]{body.addText(snippet.html);});
+    menu.htmlSnip.signal_activate().connect([this]{body.addText(snippet.html);});
     menu.condition.signal_activate().connect([this]{body.addText(snippet.contidion);});
     menu.bouclefor.signal_activate().connect([this]{body.addText(snippet.boucleFor);});
     menu.bouclewhile.signal_activate().connect([this]{body.addText(snippet.boucleWhile);});

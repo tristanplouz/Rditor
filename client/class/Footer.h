@@ -3,7 +3,7 @@
 
 #include <gtkmm.h>
 
-class Footer: public Gtk::Window{
+class Footer: public Gtk::Window {
 
   public:
     Footer();

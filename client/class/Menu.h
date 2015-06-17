@@ -8,7 +8,6 @@
 class Menu: public Gtk::Window {
     public:
         Menu();
-
         //boite resultante
         Gtk::VBox boiteMenu;
 
@@ -26,12 +25,16 @@ class Menu: public Gtk::Window {
         Gtk::MenuBar barreText;
         Gtk::MenuBar barreDessin;
 
+    //PROGRAMATION
         //snippet
-        Gtk::MenuItem html;
-        Gtk::MenuItem bouclefor;
-        Gtk::MenuItem bouclewhile;
-        Gtk::MenuItem condition;
-
+        Gtk::MenuItem htmlSnip, bouclefor, bouclewhile, condition;
+        //Code
+          //menu
+        Gtk::MenuItem scriptIt,programationIt,balisageIt;
+        Gtk::Menu script,programation,balisage;
+          //contenu menu
+        Gtk::RadioButtonGroup grLanguageRadio;
+        Gtk::RadioMenuItem html,cpp,c,js;
         //Data
         std::string actualFile;
 
@@ -53,12 +56,14 @@ class Menu: public Gtk::Window {
 
 
       Gtk::MenuItem menuItemSnippet;
+      Gtk::MenuItem menuItemLanguage;
 
       //Sous menu (conteneur du contenu)
       Gtk::Menu menuFichier;
       Gtk::Menu menuSnippet;
       Gtk::Menu menuReseau;
       Gtk::Menu menuMode;
+      Gtk::Menu menuLanguage;
 
       //Contenu sous menu Fichier
       Gtk::ImageMenuItem fermer;

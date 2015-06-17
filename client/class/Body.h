@@ -2,8 +2,9 @@
 #define DEF_BODY
 
 #include <gtkmm.h>
+#include <gtksourceviewmm.h>
 
-class Body: public Gtk::Window {
+class Body: public Gtk::Window  {
 
     public:
       Body();
@@ -11,7 +12,7 @@ class Body: public Gtk::Window {
       Gtk::HBox bodyBox;
 
       //Contenu
-      Glib::RefPtr<Gtk::TextBuffer> bufferProg;
+      Glib::RefPtr<Gsv::Buffer> bufferProg;
       Gtk::Label indev;
       Gtk::Expander chatBox;
       Gtk::ScrolledWindow scrollProg;
@@ -22,13 +23,14 @@ class Body: public Gtk::Window {
       std::string getData();
 
     private:
-      Gtk::TextView zoneProg;
+      Gsv::View zoneProg;
 
       //chat
       Gtk::VBox chat;
+      Gtk::HBox sender;
       Gtk::Label chatContent;
       Gtk::Entry chatTextSend;
-      Gtk::Button bouton;
+      Gtk::Button boutonSend;
 
 };
 
