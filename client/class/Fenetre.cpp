@@ -2,7 +2,8 @@
 
 Fenetre::Fenetre()  {
 
-    set_title("Home");//Titre de la fenetre
+    set_title("Rditor");//Titre de la fenetre
+    set_icon_from_file("ressource/logos/logo_x256.png");//logo de la fenetre
     set_default_size(1500, 1000);//taile de la fenetre
     boiteV.pack_start(menu.boiteMenu, Gtk::PACK_SHRINK);//ajout du menu au conteneur de la fenetre
     boiteV.pack_start(body.bodyBox,Gtk::PACK_EXPAND_WIDGET);//ajout du body au conteneur de la fenetre

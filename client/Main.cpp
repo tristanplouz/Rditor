@@ -1,3 +1,5 @@
+#include <iostream>
+#include <string>
 #include <gtkmm.h>
 #include "class/Fenetre.h"
 
