@@ -10,7 +10,8 @@ Menu::Menu():  barreMenu(),
                           menuItemEdition("Edition"),
                           menuItemMode("Mode"),code(grModeRadio,"Code"),text(grModeRadio,"Traitement de texte"),dessin(grModeRadio,"Dessin"),
                           menuItemReseau("Réseau"),connectAc(Gtk::Action::create("Se connecter",Gtk::Stock::CONNECT)),
-                          menuItemSnippet("Snippet"),html("HTML"),bouclefor("For"),bouclewhile("While"),condition("If")  {
+                          menuItemSnippet("Snippet"),htmlSnip("HTML"),bouclefor("For"),bouclewhile("While"),condition("If"),
+                          menuItemLanguage("Langage"),scriptIt("Script"),programationIt("Programmation"),balisageIt("Balisage"),cpp(grLanguageRadio,"C++"),html(grLanguageRadio,"HTML"),c(grLanguageRadio,"C"),js(grLanguageRadio,"Javascript") {
 
   //creation du menu Fichier et de son contenu
   menuItemFichier.set_submenu(menuFichier);
@@ -29,7 +30,6 @@ Menu::Menu():  barreMenu(),
   menuMode.append(code);
   menuMode.append(text);
   menuMode.append(dessin);
-  code.set_active();
 
   //Ajout des differents menus a la barre
   barreMenu.append(menuItemFichier);
@@ -39,12 +39,26 @@ Menu::Menu():  barreMenu(),
 
   //barre dedier
   menuItemSnippet.set_submenu(menuSnippet);
-  menuSnippet.append(html);
+  menuSnippet.append(htmlSnip);
   menuSnippet.append(bouclefor);
   menuSnippet.append(bouclewhile);
   menuSnippet.append(condition);
 
+  //Menu des langages Amusez vous a tous les ajouter si vous voulez
+  menuItemLanguage.set_submenu(menuLanguage);
+  menuLanguage.append(scriptIt);
+  scriptIt.set_submenu(script);
+  script.append(js);
+  menuLanguage.append(programationIt);
+  programationIt.set_submenu(programation);
+  programation.append(cpp);
+  programation.append(c);
+  menuLanguage.append(balisageIt);
+  balisageIt.set_submenu(balisage);
+  balisage.append(html);
+
   barreProg.append(menuItemSnippet);
+  barreProg.append(menuItemLanguage);
 
 
   //Ajout des signaux pour le menu

@@ -1,16 +1,23 @@
 #include "../class/Body.h"
 
-Body::Body():indev("INDEV"),chatBox("Chat"),bouton(Gtk::Stock::OK){
+Body::Body():indev("INDEV"),chatBox("Chat"),boutonSend(Gtk::Stock::OK){
 
   //Init de la zone de texte de programation
+  //Mise en place
   scrollProg.set_policy(Gtk::POLICY_AUTOMATIC, Gtk::POLICY_AUTOMATIC);
   zoneProg.set_wrap_mode(Gtk::WRAP_WORD);
   scrollProg.add(zoneProg);
-  bufferProg = zoneProg.get_buffer();
+  //Declaration
+  zoneProg.set_source_buffer(bufferProg);
+  zoneProg.set_show_line_numbers(true);
+
+
+
   //Init du chat
+  sender.pack_start(chatTextSend);
+  sender.pack_start(boutonSend);
   chat.pack_start(chatContent);
-  chat.pack_start(chatTextSend);
-  chat.pack_start(bouton);
+  chat.pack_start(sender);
   chatBox.add(chat);
 
   bodyBox.pack_end(chatBox,Gtk::PACK_SHRINK);

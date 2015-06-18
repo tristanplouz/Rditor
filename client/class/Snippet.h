@@ -4,7 +4,8 @@
 #include <string>
 #include <gtkmm.h>
 
-class Snippet:public Gtk::Window{
+class Snippet: public Gtk::Window {
+
     public:
       Snippet();
       std::string html,contidion,boucleFor, boucleWhile;

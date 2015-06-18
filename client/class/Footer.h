@@ -3,17 +3,18 @@
 
 #include <gtkmm.h>
 
-class Footer: public Gtk::Window{
+class Footer: public Gtk::Window {
 
   public:
     Footer();
     Gtk::HBox footerBox;
     Gtk::Statusbar status;
     Gtk::Statusbar saved;
+    Gtk::Statusbar nbrLigne;
 
   private:
     Gtk::Statusbar version;
-    Gtk::Statusbar nbrLigne;
+
 
 
 
