@@ -4,7 +4,7 @@
 #include <gtkmm.h>
 #include <gtksourceviewmm.h>
 
-class Body: public Gtk::Window  {
+class Body: public Gsv::Buffer {
 
     public:
       Body();
@@ -12,6 +12,7 @@ class Body: public Gtk::Window  {
       Gtk::HBox bodyBox;
 
       //Contenu
+      //Glib::RefPtr<Gtk::TextBuffer> bufferProg;
       Glib::RefPtr<Gsv::Buffer> bufferProg;
       Gtk::Label indev;
       Gtk::Expander chatBox;
