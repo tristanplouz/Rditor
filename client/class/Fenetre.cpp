@@ -27,7 +27,7 @@ Fenetre::Fenetre()  {
 
     menu.connectAc->signal_activate().connect([this](){
       if(netCo.connect()){
-        Gtk::MessageDialog dial(*this, "bien connecté", false, Gtk::MESSAGE_INFO);
+        Gtk::MessageDialog dial(*this, "Bien connecté", false, Gtk::MESSAGE_INFO);
         dial.run();
       }
     });//Action de la connection
@@ -36,10 +36,10 @@ Fenetre::Fenetre()  {
       footer.saved.push("Not saved");
       footer.nbrLigne.push(std::to_string(body.bufferProg->get_line_count()));
     }); //evenement lors de la modification de la zone de texte
-    
+
 
     menu.code.signal_toggled().connect([this](){ //ATTENTION CODE TRES CHELOU MAIS CA FONCTIONNE
-
+      //Pourrai etre refait avec des .hide()
       switch(mode){
         case 1 :
           menu.boiteMenu.remove(menu.barreProg);

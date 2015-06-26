@@ -4,6 +4,12 @@
 #include <SFML/Network.hpp>
 
 //Class gerant la connextion reseau
+/*
+type de message client/server
+0:connection
+1:chat
+2:modification
+*/
 class Netconnection {
 
 	public:
@@ -11,8 +17,8 @@ class Netconnection {
 		bool connect();
 
 	private:
-		sf::TcpSocket socket;
-		std::string address;
+		sf::UdpSocket socket;
+		sf::IpAddress address;
 		int port;
 
 };
