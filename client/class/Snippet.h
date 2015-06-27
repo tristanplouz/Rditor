@@ -2,7 +2,8 @@
 #define DEF_SNIPPET
 
 #include <string>
-#include <gtkmm.h>
+//ATENTION ENTETE SIMPLIFIE
+#include <gtkmm/messagedialog.h>
 
 class Snippet: public Gtk::Window {
 

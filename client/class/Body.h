@@ -1,8 +1,19 @@
 #ifndef DEF_BODY
 #define DEF_BODY
 
-#include <gtkmm.h>
-#include <gtksourceviewmm.h>
+//#include <gtkmm.h>
+//ATTENTION ENTETE SIMPLIFIE
+#include <gtkmm/box.h>
+#include <gtkmm/label.h>
+#include <gtkmm/button.h>
+#include <gtkmm/expander.h>
+#include <gtkmm/scrolledwindow.h>
+#include <gtkmm/entry.h>
+#include <gtkmm/stockitem.h>
+#include <gtkmm/stock.h>
+
+#include <gtksourceviewmm/buffer.h>
+#include <gtksourceviewmm/view.h>
 
 class Body: public Gsv::Buffer {
 

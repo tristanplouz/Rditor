@@ -11,7 +11,6 @@ Body::Body():indev("INDEV"),chatBox("Chat"),boutonSend(Gtk::Stock::OK){
   //bufferProg = zoneProg.get_source_buffer();
   bufferProg=Gsv::Buffer::create();
   zoneProg.set_source_buffer(bufferProg);
-  bufferProg->set_text("text");
   zoneProg.set_show_line_numbers(true);
 
 

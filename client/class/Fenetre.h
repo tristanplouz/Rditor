@@ -1,7 +1,10 @@
 #ifndef DEF_FENETRE
 #define DEF_FENETRE
 
-#include <gtkmm.h>
+//#include <gtkmm.h>
+//ATTENTION ENTETE SIMPLIFIE
+#include <gtkmm/box.h>
+#include <gtkmm/messagedialog.h>
 #include "../class/Menu.h"
 #include "../class/Body.h"
 #include "../class/Footer.h"
