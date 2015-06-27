@@ -15,10 +15,12 @@ class Netconnection {
 	public:
 		Netconnection();
 		bool connect();
+		bool send(int type,std::string data);
 
 	private:
 		sf::UdpSocket socket;
 		sf::IpAddress address;
+		std::string username;
 		int port;
 
 };

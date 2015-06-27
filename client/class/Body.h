@@ -28,6 +28,8 @@ class Body: public Gsv::Buffer {
       Gtk::Label indev;
       Gtk::Expander chatBox;
       Gtk::ScrolledWindow scrollProg;
+      Gtk::Entry chatTextSend;
+      Gtk::Button boutonSend;
 
       //Function
       void openText(std::string text);
@@ -41,8 +43,6 @@ class Body: public Gsv::Buffer {
       Gtk::VBox chat;
       Gtk::HBox sender;
       Gtk::Label chatContent;
-      Gtk::Entry chatTextSend;
-      Gtk::Button boutonSend;
 
 };
 

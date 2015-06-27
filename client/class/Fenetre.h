@@ -22,7 +22,7 @@ class Fenetre : public Gtk::Window {
       Body body;
       Footer footer;
       Snippet snippet;
-      Netconnection netCo;
+      Netconnection networkManager;
       Gtk::VBox boiteV;
       int mode;//1:code 2:texte 3:dessin
 

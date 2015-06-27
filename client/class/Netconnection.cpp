@@ -7,25 +7,25 @@ Netconnection::Netconnection():address ("localhost"),port(9876){
 
 bool Netconnection::connect(){
 
-  /*char data[100];
-  std::size_t received;
-  std::string name = "qqch";
-  sf::Socket::Status status = socket.connect(address, port);
-  if (status != sf::Socket::Done){
-      return 0;
-  }
-  void* pname = &name;
-  if (socket.send(pname, name.length()) != sf::Socket::Done){
-  // erreur...
-  }
-  if (socket.receive(data, 100, received) == sf::Socket::Done){
-      // erreur...
-  }*/
   sf::Packet packet;
-  packet<<"0 my name";
+  username = "my anme";
+  std::string data = "0" + username;
+  packet<<data;
 
   if ( socket.send(packet,address,port) != sf::Socket::Done){
-  return 0;
+    return 0;
+  }
+
+  return 1;
+}
+
+bool Netconnection::send(int type, std::string data){
+
+  sf::Packet packet;
+  packet<<std::to_string(type)+ data;
+
+  if ( socket.send(packet,address,port) != sf::Socket::Done){
+    return 0;
   }
 
   return 1;

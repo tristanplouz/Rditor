@@ -26,7 +26,7 @@ Fenetre::Fenetre()  {
     });//action de la sauvegarde
 
     menu.connectAc->signal_activate().connect([this](){
-      if(netCo.connect()){
+      if(networkManager.connect()){
         Gtk::MessageDialog dial(*this, "Bien connecté", false, Gtk::MESSAGE_INFO);
         dial.run();
       }
@@ -35,8 +35,8 @@ Fenetre::Fenetre()  {
     body.bufferProg->signal_changed().connect([this](){
       footer.saved.push("Not saved");
       footer.nbrLigne.push(std::to_string(body.bufferProg->get_line_count()));
+      networkManager.send(2,"data changed");
     }); //evenement lors de la modification de la zone de texte
-
 
     menu.code.signal_toggled().connect([this](){ //ATTENTION CODE TRES CHELOU MAIS CA FONCTIONNE
       //Pourrai etre refait avec des .hide()
@@ -74,6 +74,12 @@ Fenetre::Fenetre()  {
       }
       show_all();
     });//Evenement de changement de mode
+
+    body.boutonSend.signal_activate().connect([this](){
+      
+      networkManager.send(1,body.chatTextSend.get_text());
+    });
+
 
     //Gestion des snippets
     menu.htmlSnip.signal_activate().connect([this]{body.addText(snippet.html);});
