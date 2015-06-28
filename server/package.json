@@ -1,13 +1,10 @@
 {
-  "name": "Rditeur server",
+  "name": "Rditeur",
   "version": "0.1.0",
   "description": "The server part of Rditor project",
-  "main": "server/main.js",
+  "main": "main.js",
   "scripts": {
-    "start": "node server/main.js"
-  },
-  "dependencies": {
-    "dgram": "0.10"
+    "start": "node main.js"
   },
   "engines": {
     "node": "0.12.x"

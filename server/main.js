@@ -5,7 +5,7 @@ var address,port,userNbr=0;
 var socket = dgram.createSocket('udp4');
 
 console.log("Socket created\n");
-socket.bind();
+socket.bind(8080);
 
 socket.on("message",function (msg,rinfo) {
   var brut=msg.toString();
