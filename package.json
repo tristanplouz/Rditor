@@ -2,9 +2,9 @@
   "name": "Rditeur server",
   "version": "0.1.0",
   "description": "The server part of Rditor project",
-  "main": "main.js",
+  "main": "server/main.js",
   "scripts": {
-    "start": "node main.js"
+    "start": "node server/main.js"
   },
   "dependencies": {
     "dgram": "0.10"
