@@ -28,14 +28,15 @@ Fenetre::Fenetre()  {
     menu.connectAc->signal_activate().connect([this](){
       if(networkManager.connect()){
         Gtk::MessageDialog dial(*this, "Bien connecté", false, Gtk::MESSAGE_INFO);
+        networkManager.connected=true;
         dial.run();
       }
     });//Action de la connection
 
-    body.bufferProg->signal_changed().connect([this](){
+    body.bufferProg-> signal_end_user_action().connect([this](){
       footer.saved.push("Not saved");
       footer.nbrLigne.push(std::to_string(body.bufferProg->get_line_count()));
-      networkManager.send(2,"data changed");
+      networkManager.send(3,networkManager.room,"data changed");
     }); //evenement lors de la modification de la zone de texte
 
     menu.code.signal_toggled().connect([this](){ //ATTENTION CODE TRES CHELOU MAIS CA FONCTIONNE
@@ -76,8 +77,8 @@ Fenetre::Fenetre()  {
     });//Evenement de changement de mode
 
     body.boutonSend.signal_activate().connect([this](){
-      
-      networkManager.send(1,body.chatTextSend.get_text());
+
+      networkManager.send(2,networkManager.room,body.chatTextSend.get_text());
     });
 
 

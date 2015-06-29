@@ -6,16 +6,19 @@
 //Class gerant la connextion reseau
 /*
 type de message client/server
-0:connection
-1:chat
-2:modification
+0:deconnection
+1:connection
+2:chat
+3:Modification texte
 */
 class Netconnection {
 
 	public:
 		Netconnection();
 		bool connect();
-		bool send(int type,std::string data);
+		bool send(int type,int room,std::string data);
+		bool connected=false;
+		int room;
 
 	private:
 		sf::UdpSocket socket;
