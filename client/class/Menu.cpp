@@ -9,7 +9,7 @@ Menu::Menu():  barreMenu(),
                           menuItemFichier("Fichier"),ouvrirAc(Gtk::Action::create("Ouvrir",Gtk::Stock::OPEN)),enregistrerAc(Gtk::Action::create("Enregistrer",Gtk::Stock::SAVE_AS)),fermer(Gtk::Stock::CLOSE),
                           menuItemEdition("Edition"),
                           menuItemMode("Mode"),code(grModeRadio,"Code"),text(grModeRadio,"Traitement de texte"),dessin(grModeRadio,"Dessin"),
-                          menuItemReseau("Réseau"),connectAc(Gtk::Action::create("Se connecter",Gtk::Stock::CONNECT)),
+                          menuItemReseau("Réseau"),connectAc(Gtk::Action::create("Se connecter",Gtk::Stock::CONNECT)),disconnectAc(Gtk::Action::create("Se déconnecter",Gtk::Stock::DISCONNECT)),
                           menuItemSnippet("Snippet"),htmlSnip("HTML"),bouclefor("For"),bouclewhile("While"),condition("If"),
                           menuItemLanguage("Langage"),scriptIt("Script"),programationIt("Programmation"),balisageIt("Balisage"),cpp(grLanguageRadio,"C++"),html(grLanguageRadio,"HTML"),c(grLanguageRadio,"C"),js(grLanguageRadio,"Javascript") {
 
@@ -24,6 +24,7 @@ Menu::Menu():  barreMenu(),
   //creation du menu Reseau et de son contenu
   menuItemReseau.set_submenu(menuReseau);
   menuReseau.append(*(connectAc->create_menu_item()));
+  menuReseau.append(*(disconnectAc->create_menu_item()));
 
   //creation du menu Mode et de son contenu
   menuItemMode.set_submenu(menuMode);
@@ -71,6 +72,7 @@ Menu::Menu():  barreMenu(),
   barreOutils.append(*(enregistrerAc->create_tool_item()));
   barreOutils.append(separateurBarreOutils);
   barreOutils.append(*(connectAc->create_tool_item()));
+  barreOutils.append(*(disconnectAc->create_tool_item()));
 
   //ajout du menu et de la tool barre a la boite
   boiteMenu.pack_start(barreMenu);

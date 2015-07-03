@@ -19,6 +19,7 @@ class Menu: public Gtk::Window {
         Glib::RefPtr<Gtk::Action> ouvrirAc;
         Glib::RefPtr<Gtk::Action> enregistrerAc;
         Glib::RefPtr<Gtk::Action> connectAc;
+        Glib::RefPtr<Gtk::Action> disconnectAc;
 
         //barre de menu dedier
         Gtk::MenuBar barreProg;

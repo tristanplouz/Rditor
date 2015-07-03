@@ -42,6 +42,11 @@ Fenetre::Fenetre()  {
       }
     });//Action de la connection
 
+    menu.disconnectAc->signal_activate().connect([this](){
+      networkManager.send(0,networkManager.username);
+      networkManager.connected=false;
+    });//Action de la deconection
+
     body.bufferProg-> signal_end_user_action().connect([this](){
       footer.saved.push("Not saved");
       footer.nbrLigne.push(std::to_string(body.bufferProg->get_line_count()));
@@ -86,11 +91,10 @@ Fenetre::Fenetre()  {
       show_all();
     });//Evenement de changement de mode
 
-    body.boutonSend.signal_activate().connect([this](){
-
+    body.boutonSend.signal_pressed().connect([this](){
       networkManager.send(2,body.chatTextSend.get_text());
+      body.chatTextSend.set_text("");
     });
-
 
     //Gestion des snippets
     menu.htmlSnip.signal_activate().connect([this]{body.addText(snippet.html);});
@@ -103,12 +107,11 @@ Fenetre::Fenetre()  {
     std::size_t received;
     unsigned short remotePort;
     sf::IpAddress sender;
-    if(networkManager.socket.receive(data, 100, received, sender, remotePort)==sf::Socket::Done){
+    networkManager.socket.receive(data, 100, received, sender, remotePort);
 
-      Gtk::MessageDialog dial(*this, "QQch de recu", false, Gtk::MESSAGE_INFO);
-      networkManager.connected=true;
+      Gtk::MessageDialog dial(*this, data , false, Gtk::MESSAGE_INFO);
       dial.run();
 
-    }
+
 
 }
