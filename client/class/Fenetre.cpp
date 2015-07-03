@@ -26,17 +26,27 @@ Fenetre::Fenetre()  {
     });//action de la sauvegarde
 
     menu.connectAc->signal_activate().connect([this](){
-      if(networkManager.connect()){
-        Gtk::MessageDialog dial(*this, "Bien connecté", false, Gtk::MESSAGE_INFO);
-        networkManager.connected=true;
-        dial.run();
+      Dialco dialconnect("Informations de connection", this);
+      int result = dialconnect.run();
+      if(result == Gtk::RESPONSE_OK){
+        dialconnect.getData();
+        networkManager.username=dialconnect.pseudo;
+        networkManager.ip=dialconnect.ip ;
+        networkManager.port=dialconnect.port;
+        networkManager.room=dialconnect.room;
+        if(networkManager.connect()){
+            Gtk::MessageDialog dial(*this, "Bien connecté", false, Gtk::MESSAGE_INFO);
+            networkManager.connected=true;
+            dial.run();
+        }
       }
     });//Action de la connection
 
     body.bufferProg-> signal_end_user_action().connect([this](){
       footer.saved.push("Not saved");
       footer.nbrLigne.push(std::to_string(body.bufferProg->get_line_count()));
-      networkManager.send(3,networkManager.room,"data changed");
+
+      networkManager.send(3,"data changed");
     }); //evenement lors de la modification de la zone de texte
 
     menu.code.signal_toggled().connect([this](){ //ATTENTION CODE TRES CHELOU MAIS CA FONCTIONNE
@@ -78,7 +88,7 @@ Fenetre::Fenetre()  {
 
     body.boutonSend.signal_activate().connect([this](){
 
-      networkManager.send(2,networkManager.room,body.chatTextSend.get_text());
+      networkManager.send(2,body.chatTextSend.get_text());
     });
 
 
@@ -87,5 +97,18 @@ Fenetre::Fenetre()  {
     menu.condition.signal_activate().connect([this]{body.addText(snippet.contidion);});
     menu.bouclefor.signal_activate().connect([this]{body.addText(snippet.boucleFor);});
     menu.bouclewhile.signal_activate().connect([this]{body.addText(snippet.boucleWhile);});
+
+    //Gestion reseau
+    char data[100];
+    std::size_t received;
+    unsigned short remotePort;
+    sf::IpAddress sender;
+    if(networkManager.socket.receive(data, 100, received, sender, remotePort)==sf::Socket::Done){
+
+      Gtk::MessageDialog dial(*this, "QQch de recu", false, Gtk::MESSAGE_INFO);
+      networkManager.connected=true;
+      dial.run();
+
+    }
 
 }

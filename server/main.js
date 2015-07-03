@@ -7,7 +7,7 @@ var socket = dgram.createSocket('udp4');
 var client=[];
 
 console.log("Socket created\n");
-socket.bind(5000);
+socket.bind(9876);
 socket.on("message",function (msg,rinfo) {
   var brut=msg.toString();
   var data = brut.substr(6, brut.length+1);
@@ -17,11 +17,28 @@ socket.on("message",function (msg,rinfo) {
       userNbr--;
       break;
     case '1' :
-      console.log("New connection from "+data);
-      client.push({"name":data,
-                              "room":brut.charAt(5),
-                              "ip":rinfo.address});
-      userNbr++;
+      var already=false;
+      for(var i = 0; i<client.length; i++){
+        console.log(client[i]+" a l'indice "+i);
+        if(client.length!=0){
+          if(client[i].name == data && already!=true){
+            already=true;
+          }
+        }
+      }
+      if(already==false){
+        console.log("New connection from "+data);
+        client.push({"name":data,
+                                "room":brut.charAt(5),
+                                "ip":rinfo.address});
+        userNbr++;
+      }
+      else if (already==true){
+        console.log("ALREADY USE: "+data);
+        socket.send("Already use", 0, "Already use".length, rinfo.port, rinfo.address, function(err) {
+          socket.close();
+        });
+      }
       break;
     case '2' :
       console.log("New chat message : "+data);

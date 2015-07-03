@@ -10,6 +10,7 @@
 #include "../class/Footer.h"
 #include "../class/Snippet.h"
 #include "../class/Netconnection.h"
+#include "../class/Dialco.h"
 
 
 

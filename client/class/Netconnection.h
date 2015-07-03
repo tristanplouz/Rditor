@@ -3,6 +3,7 @@
 
 #include <SFML/Network.hpp>
 
+
 //Class gerant la connextion reseau
 /*
 type de message client/server
@@ -16,15 +17,16 @@ class Netconnection {
 	public:
 		Netconnection();
 		bool connect();
-		bool send(int type,int room,std::string data);
+		bool send(int type,std::string data);
 		bool connected=false;
-		int room;
+		int room,port;
+		std::string username,ip;
+		sf::UdpSocket socket;
 
 	private:
-		sf::UdpSocket socket;
+
 		sf::IpAddress address;
-		std::string username;
-		int port;
+
 
 };
 

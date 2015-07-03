@@ -15,7 +15,7 @@
 #include <gtksourceviewmm/buffer.h>
 #include <gtksourceviewmm/view.h>
 
-class Body: public Gsv::Buffer {
+class Body {
 
     public:
       Body();
